@@ -135,12 +135,16 @@ function initScrollReveal() {
    SMOOTH SCROLL
    ══════════════════════════════════════════════ */
 function initSmoothScroll() {
-  const btn = document.getElementById('hero-cta-btn');
-  if (!btn) return;
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(btn.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 }
 

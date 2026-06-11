@@ -267,18 +267,20 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--c-bg);
-  background: linear-gradient(135deg, var(--c-gold), var(--c-gold-light));
+  color: var(--c-white);
+  background: linear-gradient(135deg, var(--c-purple-dark), var(--c-pink-deep));
   padding: 0.9rem 2.4rem;
   border-radius: 50px;
-  box-shadow: 0 0 30px rgba(251,191,36,0.3), 0 4px 16px rgba(0,0,0,0.3);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.35), 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease);
   animation: fadeUp 0.9s 0.8s both;
 }
 
 .btn-primary:hover {
+  color: var(--c-white);
+  background: linear-gradient(135deg, var(--c-purple), var(--c-pink));
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 0 50px rgba(251,191,36,0.5), 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 0 50px rgba(236, 72, 153, 0.5), 0 8px 24px rgba(0,0,0,0.4);
 }
 
 /* Scroll indicator */
@@ -296,6 +298,12 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 3px;
   text-transform: uppercase;
   animation: fadeUp 1s 1.4s both;
+  cursor: pointer;
+  transition: color 0.3s var(--ease);
+}
+
+.hero-scroll:hover {
+  color: var(--c-purple-soft);
 }
 
 .scroll-track {
@@ -303,6 +311,11 @@ img { max-width: 100%; height: auto; display: block; }
   border: 1.5px solid rgba(255,255,255,0.2);
   border-radius: 11px;
   position: relative;
+  transition: border-color 0.3s var(--ease);
+}
+
+.hero-scroll:hover .scroll-track {
+  border-color: var(--c-purple-soft);
 }
 
 .scroll-dot {
@@ -313,6 +326,47 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 2px;
   background: var(--c-purple-soft);
   animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-label {
+  font-weight: 500;
+  transition: opacity 0.3s var(--ease);
+}
+
+.scroll-chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2px;
+}
+
+.chev {
+  display: block;
+  font-size: 1rem;
+  line-height: 0.4;
+  color: var(--c-purple-soft);
+  opacity: 0;
+  animation: chevPulse 2s infinite;
+}
+
+.chev-1 { animation-delay: 0s; }
+.chev-2 { animation-delay: 0.3s; margin-top: -2px; }
+.chev-3 { animation-delay: 0.6s; margin-top: -2px; }
+
+@keyframes chevPulse {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+    color: var(--c-pink);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.8);
+  }
 }
 
 @keyframes scrollBounce {
